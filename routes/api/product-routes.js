@@ -6,7 +6,7 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 // get all products
 router.get("/", (req, res) => {
   Product.findAll({
-    attributes: ['id', 'product_name', 'price', 'stock'],
+    attributes: ["id", "product_name", "price", "stock"],
     include: [
       {
         model: Category,
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'product_name', 'price', 'stock'],
+    attributes: ["id", "product_name", "price", "stock"],
     include: [
       {
         model: Category,
@@ -61,8 +61,6 @@ router.get("/:id", (req, res) => {
 
 // create new product
 router.post("/", (req, res) => {
- 
-
   Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
@@ -138,7 +136,7 @@ router.delete("/:id", (req, res) => {
   Product.destroy({
     where: {
       id: req.params.id,
-    }
+    },
   })
     .then((productData) => {
       if (!productData) {
